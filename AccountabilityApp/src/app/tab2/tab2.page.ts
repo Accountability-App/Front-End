@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, ModalController } from '@ionic/angular';
+import { BuddiesModalComponent } from '../buddies-modal/buddies-modal.component';
 import { BuddiesPopoverComponent } from '../buddies-popover/buddies-popover.component'
 import { HttpService } from './http.service';
 
@@ -12,9 +13,7 @@ export class Tab2Page {
 
   buddies: Object;
 
-  constructor(public popoverController: PopoverController, private _http: HttpService) {
-
-  }
+  constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService) { }
 
   ngOnInit() {
     this._http.getBuddies().subscribe(data => {
@@ -28,5 +27,12 @@ export class Tab2Page {
       component: BuddiesPopoverComponent
     });
     return await popover.present();
+  }
+
+  async presentModal(event) {
+    const modal = await this.modalController.create({
+      component: BuddiesModalComponent
+    });
+    return await modal.present();
   }
 }

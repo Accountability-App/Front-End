@@ -15,21 +15,28 @@
         <ion-button expand="block" (click)="presentPopover($event)">Search</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button expand="block">Requests</ion-button>
+        <ion-button expand="block" (click)="presentModal()">Requests</ion-button>
       </ion-col>
     </ion-row>
 
-    <ion-list *ngIf="buddies">
-      <ion-item *ngFor="let buddy of buddies">
-        <ion-avatar slot="start">
-          <img src="icon1.jpg">
-        </ion-avatar>
-        <ion-label>
-          <h3>{{ buddy.username }}</h3>
-          <p>{{ buddy.firstname }} {{ buddy.lastname }}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
+    <div *ngIf="buddies; else noBuddies">
+      <ion-list>
+        <ion-item *ngFor="let buddy of buddies">
+          <ion-avatar slot="start">
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-avatar>
+          <ion-label>
+            <h3>{{ buddy.username }}</h3>
+            <p>{{ buddy.firstname }} {{ buddy.lastname }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+    <ng-template #noBuddies>
+      <div class="ion-text-center ion-margin-top">
+        <ion-note style="text-align: center;">You have no buddies. Add some by searching!</ion-note>
+      </div>
+    </ng-template>
 
   </ion-content>
 </body>

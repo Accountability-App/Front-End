@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Buddy Requests</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="requests; else noRequests">
+    <ion-list *ngIf="requests">
+      <ion-item *ngFor="let request of requests">
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <ion-label>
+          <h3>{{ request.username }}</h3>
+          <p>{{ request.firstname }} {{ request.lastname }}</p>
+        </ion-label>
+        <ion-row>
+          <ion-col>
+            <ion-button color="success" (click)="accept(request.username)"><ion-icon name="checkmark"></ion-icon></ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="danger" (click)="removeRequest(request.username)"><ion-icon name="close"></ion-icon></ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ng-template #noRequests>
+    <div class="ion-text-center ion-margin-top">
+      <ion-note style="text-align: center;">You have no buddy requests.</ion-note>
+    </div>
+  </ng-template>
+</ion-content>
