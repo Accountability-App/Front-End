@@ -1,7 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="secondary">
-      <ion-button>Edit Profile</ion-button>
+      <!-- <ion-button>Edit Profile</ion-button> -->
+      <ion-button expand="block" (click)="presentPopover($event)">Edit Profile</ion-button>
     </ion-buttons>
     <ion-title>My Profile</ion-title>
   </ion-toolbar>
@@ -34,13 +35,13 @@
       <ion-item>
           <div class="ion-text-start">
             <h3>Task Functionality:</h3>
-            When you click/tap a task, it should let you view it and probably edit it.
+            When you click/tap a task, maybe it should show more info
           </div>
       </ion-item>
       <ion-item>
           <div class="ion-text-start">
-            <h3>Wake up on Thursday:</h3>
-            On Thursday, March 11th, wake up at 8:00 AM
+            <h3>DO WE EVEN NEED THIS ANYMORE?:</h3>
+            I'm not entirely sure if we are even going to put current tasks here 
           </div>
       </ion-item>
       <ion-item>
@@ -60,8 +61,8 @@
       </ion-item>
       <ion-item>
           <div class="ion-text-start">
-            <h3>Task 5:</h3>
-            This is an example yet another description for yet another task
+            <h3>Wake up on Thursday:</h3>
+            On Thursday, March 11th, wake up at 8:00 AM
           </div>
       </ion-item>
     </ion-list>
