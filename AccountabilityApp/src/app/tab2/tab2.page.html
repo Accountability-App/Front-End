@@ -1,9 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>My Buddies</ion-title>
-  </ion-toolbar>
-</ion-header>
+<head>
 
-<ion-content [fullscreen]="true">
-  <app-explore-container name="Replace with your code"></app-explore-container>
-</ion-content>
+</head>
+<body>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>My Buddies</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" (click)="presentPopover($event)">Search</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block">Requests</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-list *ngIf="buddies">
+      <ion-item *ngFor="let buddy of buddies">
+        <ion-avatar slot="start">
+          <img src="icon1.jpg">
+        </ion-avatar>
+        <ion-label>
+          <h3>{{ buddy.username }}</h3>
+          <p>{{ buddy.firstname }} {{ buddy.lastname }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</body>
+
