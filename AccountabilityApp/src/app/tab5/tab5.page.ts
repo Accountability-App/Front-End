@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './../services/authentication.service';
 import { PopoverController } from '@ionic/angular';
 import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component'
 import { HttpService } from './http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab5',
@@ -17,9 +19,8 @@ export class Tab5Page {
   tag: Object;
   description: Object;
 
-  constructor(public popoverController: PopoverController, private _http: HttpService) {
-
-  }
+  constructor(public popoverController: PopoverController, private _http: HttpService,
+             private authService: AuthenticationService, private router: Router) {}
 
   //Get all data initially
   ngOnInit() {
@@ -48,5 +49,9 @@ export class Tab5Page {
     return await popover.present();
   }
 
+  async logout() {
+    await this.authService.logout();
+    this.router.navigateByUrl('/', { replaceUrl: true });
+  }
  
 }
