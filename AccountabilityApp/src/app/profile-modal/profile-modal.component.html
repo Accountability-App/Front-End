@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edit Profile</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-input placeholder="New Tag"></ion-input>
+  <ion-input placeholder="New Description"></ion-input>
+  <ion-button expand="block" color="dark">Profile Pic</ion-button>
+  <ion-button expand="block" color="dark">Background Pic</ion-button>
+  <ion-input placeholder="New Username"></ion-input>
+  <ion-input placeholder="New Password"></ion-input>
+  <ion-button expand="block" (click)="save($event)">Save</ion-button>
+</ion-content>

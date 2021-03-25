@@ -8,9 +8,10 @@ export class HttpService {
     constructor(private http: HttpClient) { }
 
     getData() {
-        return this.http.get("assets/sample.json");
+        return this.http.get("assets/profileSample.json");
     }
 
+    /* Don't this this is neccessary 
     //Need to get and retrun specific data from file for each function
     getUsername() {
         return this.http.get("assets/sample.json");
@@ -39,4 +40,5 @@ export class HttpService {
     getBackPic() {
         return this.http.get("assets/sample.json");
     }
+    */
 }

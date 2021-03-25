@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="secondary">
       <!-- <ion-button>Edit Profile</ion-button> -->
-      <ion-button expand="block" (click)="presentPopover($event)">Edit Profile</ion-button>
+      <ion-button expand="block" (click)="presentModal($event)">Edit Profile</ion-button>
     </ion-buttons>
     <ion-title>My Profile</ion-title>
   </ion-toolbar>
@@ -11,18 +11,42 @@
 <ion-content [fullscreen]="true">
 
   <ion-card>
+    <!-- TODO:  <div *ngIf="backPic; else noBackPic"> </div> -->
     <div class="item default-profile-background"></div>
 
     <ion-card-content body style="background-color:#FFFCD6">
-      <ion-label class="username-label" color="dark" slot="start">Jacob (Username) @ChickenNuggs</ion-label>
-      <ion-avatar slot="start">
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-avatar>
-      My name is Jacob and I like doing things and stuff but
-      I can't always get them done on time. So I use this app
-      to help me stay on top of things. Thanks in advance for the help :)
+      <!-- If there is profileData supplied, show their data -->
+      <div *ngIf="profileData; else noProfileData">
+        <ion-label class="username-label" color="dark" slot="start">
+        {{ profileData[0].firstname }}--{{ profileData[0].username }} {{ profileData[0].tag }}
+        </ion-label>
+
+        <!-- TODO: <div *ngIf="profPic; else noProfPic"> </div> -->
+        <ion-avatar slot="start">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+
+          <p slot="start">{{ profileData[0].description }}</p>
+      </div>
+
+      <!-- If there is no profileData supplied, just show default -->
+      <ng-template #noProfileData>
+        <ion-label class="username-label" color="dark" slot="start">
+        *firstname--*username *tag
+        </ion-label>
+
+        <ion-avatar slot="start">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <p>Something went wrong with the request :(  this is the default bio/description.</p>
+      </ng-template>
+
     </ion-card-content>
-    <!-- List of Text Items -->
+
+
+
+
+    <!-- List of Tasks as List of Text Items -->
     <ion-list body style="background-color:#7FB069">
       <ion-label stacked class="current-tasks-label" color="dark" TextDecorations="Underline">Current Tasks</ion-label>
       <ion-item>
@@ -46,7 +70,7 @@
       </ion-item>
       <ion-item>
           <div class="ion-text-start">
-            <h3>Task 4:</h3>
+            <h3>Long Task:</h3>
             This is an example of a long description for a task.
             This is an example of a long description for a task.
             This is an example of a long description for a task.
@@ -87,3 +111,10 @@
   };
   </script>
   -->
+
+  <!-- <ion-label class="username-label" color="dark" slot="start">Jacob (Username) @ChickenNuggs</ion-label> -->
+  <!--
+        My name is Jacob and I like doing things and stuff but
+        I can't always get them done on time. So I use this app
+        to help me stay on top of things. Thanks in advance for the help :)
+        -->

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
-import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component'
+import { PopoverController, ModalController } from '@ionic/angular';
+import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
+import { ProfileModalComponent } from '../profile-modal/profile-modal.component';
 import { HttpService } from './http.service';
 
 @Component({
@@ -12,14 +13,17 @@ import { HttpService } from './http.service';
 export class Tab5Page {
 
   profileData: Object;
+
+  /*Don't this this is neccessary
   username: Object;
   firstName: Object;
   tag: Object;
   description: Object;
+  */
 
-  constructor(public popoverController: PopoverController, private _http: HttpService) {
+  constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService) { }
 
-  }
+  //TODO: include data for background picture (backPic) and profile picture (profPic)
 
   //Get all data initially
   ngOnInit() {
@@ -27,6 +31,7 @@ export class Tab5Page {
       this.profileData = data;
       console.log(this.profileData);
     })
+    /* Don't this this is neccessary 
     this._http.getUsername().subscribe(data => {
       this.username = data;
     })
@@ -39,8 +44,10 @@ export class Tab5Page {
     this._http.getDescription().subscribe(data => {
       this.description = data;
     })
+    */
   }
 
+  //maybe delete popover event
   async presentPopover(event) {
     const popover = await this.popoverController.create({
       component: ProfilePopoverComponent
@@ -48,5 +55,11 @@ export class Tab5Page {
     return await popover.present();
   }
 
- 
+  async presentModal(event) {
+    const modal = await this.modalController.create({
+      component: ProfileModalComponent
+    });
+    return await modal.present();
+  }
+
 }
