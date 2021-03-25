@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="close()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div *ngIf="exists; else noUser">
+    <ion-card>
+      <ion-card-content body>
+        <ion-label id="name-field" class="username-label" color="dark" slot="start">username</ion-label>
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        Bottom text.
+      </ion-card-content>
+    </ion-card>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block">Add Buddy</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ng-template #noUser>
+    <div class="ion-text-center ion-margin-top">
+      <ion-note style="text-align: center;">This user does not exist.</ion-note>
+    </div>
+  </ng-template>
+</ion-content>

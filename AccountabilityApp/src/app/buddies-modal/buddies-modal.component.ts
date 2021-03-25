@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +14,7 @@ export class BuddiesModalComponent implements OnInit {
 
   requests: any;
 
-  constructor(public modalController: ModalController, private _http: HttpService) { }
+  constructor(public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
     this._http.getRequests().subscribe(data => {
@@ -42,6 +43,11 @@ export class BuddiesModalComponent implements OnInit {
     if(index > -1){
       this.requests.splice(index, 1);
     }
+  }
+
+  visitProfile(username) {
+    this.dismiss();
+    this.router.navigateByUrl("/profile/" + username);
   }
 
 }

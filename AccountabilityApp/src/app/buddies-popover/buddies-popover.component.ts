@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-buddies-popover',
@@ -8,12 +9,18 @@ import { PopoverController } from '@ionic/angular';
 })
 export class BuddiesPopoverComponent implements OnInit {
 
-  constructor(public popoverController: PopoverController) { }
+  constructor(public popoverController: PopoverController, private router: Router) { }
 
   ngOnInit() {}
 
   close() {
     this.popoverController.dismiss();
+  }
+
+  async search() {
+    let username = (document.getElementById("username-search") as HTMLInputElement).value;
+    this.close()
+    this.router.navigateByUrl("/profile/" + username);
   }
 
 }

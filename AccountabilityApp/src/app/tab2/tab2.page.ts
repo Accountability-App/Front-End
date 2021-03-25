@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { PopoverController, ModalController } from '@ionic/angular';
 import { BuddiesModalComponent } from '../buddies-modal/buddies-modal.component';
 import { BuddiesPopoverComponent } from '../buddies-popover/buddies-popover.component'
@@ -13,7 +14,7 @@ export class Tab2Page {
 
   buddies: Object;
 
-  constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService) { }
+  constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
     this._http.getBuddies().subscribe(data => {
@@ -34,5 +35,9 @@ export class Tab2Page {
       component: BuddiesModalComponent
     });
     return await modal.present();
+  }
+
+  visitProfile(username) {
+    this.router.navigateByUrl("/profile/" + username);
   }
 }
