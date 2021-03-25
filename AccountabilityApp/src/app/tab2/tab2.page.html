@@ -29,6 +29,11 @@
             <h3>{{ buddy.username }}</h3>
             <p>{{ buddy.firstname }} {{ buddy.lastname }}</p>
           </ion-label>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="visitProfile(buddy.username)"><ion-icon name="search"></ion-icon></ion-button>
+            </ion-col>
+          </ion-row>
         </ion-item>
       </ion-list>
     </div>

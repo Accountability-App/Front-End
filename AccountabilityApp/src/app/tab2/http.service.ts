@@ -8,6 +8,6 @@ export class HttpService {
     constructor(private http: HttpClient) { }
 
     getBuddies() {
-        return this.http.get("assets/sample.json");
+        return this.http.get("http://localhost:8081/userProfile");
     }
 }

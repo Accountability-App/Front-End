@@ -24,6 +24,9 @@
           <ion-col>
             <ion-button color="danger" (click)="removeRequest(request.username)"><ion-icon name="close"></ion-icon></ion-button>
           </ion-col>
+          <ion-col>
+            <ion-button (click)="visitProfile(request.username)"><ion-icon name="search"></ion-icon></ion-button>
+          </ion-col>
         </ion-row>
       </ion-item>
     </ion-list>
