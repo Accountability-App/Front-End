@@ -7,38 +7,14 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
     constructor(private http: HttpClient) { }
 
+
+    //TODO: Somehow get this to get data from the logged in user, not just ArchDruid
     getData() {
+        return this.http.get("http://localhost:8082/ProfileTab/ArchDruid");
+    }
+
+    getLocalData () {
         return this.http.get("assets/profileSample.json");
     }
 
-    /* Don't this this is neccessary 
-    //Need to get and retrun specific data from file for each function
-    getUsername() {
-        return this.http.get("assets/sample.json");
-    }
-
-    getFirstName() {
-        return this.http.get("assets/sample.json");
-    }
-
-    getTag() {
-        return this.http.get("assets/sample.json");
-    }
-
-    getDescription() {
-        return this.http.get("assets/sample.json");
-    }
-
-    getCurrentTasks() {
-        return this.http.get("assets/sample.json");
-    }
-
-    getProfilePic() {
-        return this.http.get("assets/sample.json");
-    }
-
-    getBackPic() {
-        return this.http.get("assets/sample.json");
-    }
-    */
 }

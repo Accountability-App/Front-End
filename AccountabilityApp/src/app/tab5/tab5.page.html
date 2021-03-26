@@ -18,7 +18,7 @@
       <!-- If there is profileData supplied, show their data -->
       <div *ngIf="profileData; else noProfileData">
         <ion-label class="username-label" color="dark" slot="start">
-        {{ profileData[0].firstname }}--{{ profileData[0].username }} {{ profileData[0].tag }}
+        {{ profileData.firstname }}  @{{ profileData.username }}
         </ion-label>
 
         <!-- TODO: <div *ngIf="profPic; else noProfPic"> </div> -->
@@ -26,19 +26,19 @@
         <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
         </ion-avatar>
 
-          <p slot="start">{{ profileData[0].description }}</p>
+          <p slot="start">{{ profileData.description }}</p>
       </div>
 
       <!-- If there is no profileData supplied, just show default -->
       <ng-template #noProfileData>
         <ion-label class="username-label" color="dark" slot="start">
-        *firstname--*username *tag
+        *firstname  @username
         </ion-label>
 
         <ion-avatar slot="start">
         <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
         </ion-avatar>
-        <p>Something went wrong with the request :(  this is the default bio/description.</p>
+        <p>Something went wrong with the request :(  this is the default data (name/username/tag/bio/description/etc..)</p>
       </ng-template>
 
     </ion-card-content>
