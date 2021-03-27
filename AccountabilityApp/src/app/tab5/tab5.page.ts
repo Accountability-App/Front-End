@@ -13,7 +13,7 @@ import { HttpService } from './http.service';
 export class Tab5Page {
 
   profileData: Object;
-
+  localDataTest: Object;
   /*Don't this this is neccessary
   username: Object;
   firstName: Object;
@@ -30,6 +30,11 @@ export class Tab5Page {
     this._http.getData().subscribe(data => {
       this.profileData = data;
       console.log(this.profileData);
+    })
+
+    this._http.getLocalData().subscribe(data => {
+      this.localDataTest = data;
+      console.log(this.localDataTest);
     })
     /* Don't this this is neccessary 
     this._http.getUsername().subscribe(data => {
