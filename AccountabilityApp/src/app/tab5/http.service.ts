@@ -11,6 +11,10 @@ export class HttpService {
         return this.http.get("assets/profileSample.json");
     }
 
+    getTaskData() {
+        return this.http.get("assets/taskSample.json")
+    }
+
     /* Don't this this is neccessary 
     //Need to get and retrun specific data from file for each function
     getUsername() {

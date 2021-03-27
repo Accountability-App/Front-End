@@ -4,6 +4,33 @@
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Replace with your code"></app-explore-container>
+  <ion-item>Profile Id is {{ profileData[0].profile_id }}</ion-item>
+  <span *ngFor="let curr_task of taskData">
+    <span *ngIf="profileData[0].profile_id == curr_task.profile_id">
+        <ion-item-divider><h3>{{ curr_task.title_of_task }}</h3>
+          <ion-button href="#">
+            <ion-icon slot="start" name="trash-outline"></ion-icon>
+            Delete Task
+          </ion-button>
+        </ion-item-divider>
+        <ion-card><ion-card-content>
+          Description: {{ curr_task.description_of_task }}
+          <br>
+          Time: {{ curr_task.time_of_task }}
+          <br>
+          Date: {{ curr_task.date_of_task }}
+          <br>
+        <span *ngFor="let curr_prof of profileData">
+          <span *ngIf="curr_task.helper_id == curr_prof.profile_id">
+              Helper: {{ curr_prof.username }}
+          </span>
+        </span>
+        </ion-card-content></ion-card>
+    </span>
+  </span>
+
+
 </ion-content>
