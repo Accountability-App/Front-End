@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HttpService } from '../buddies-modal/http.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,10 +9,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private _http: HttpService) { }
 
   exists: boolean = true;
-  username: string;
+  otherUsername: string;
 
   friends: boolean = true;
   notFriends: boolean = false;
@@ -19,13 +20,13 @@ export class ProfilePage implements OnInit {
   incomingRequest: boolean = false;
 
   ngOnInit() {
-    this.username = this.route.snapshot.params.id;
+    this.otherUsername = this.route.snapshot.params.id;
   }
 
   ngAfterViewInit() {
     let element = document.getElementById("username-field");
     if (element) {
-      element.textContent = this.username;
+      element.textContent = this.otherUsername;
     }
   }
 

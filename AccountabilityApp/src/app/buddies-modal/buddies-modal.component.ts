@@ -17,7 +17,7 @@ export class BuddiesModalComponent implements OnInit {
   constructor(public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
-    let username = "ArchDruid"; // TODO: Set username here
+    let username: string = "ArchDruid";
     this._http.getRequests(username).subscribe(data => {
       this.requests = data;
       console.log(this.requests);

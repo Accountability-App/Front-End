@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
     constructor(private http: HttpClient) { }
 
-    getProfile() {
-        return this.http.get("http://localhost:8081/userProfile");
+    getRequests(username: string) {
+        return this.http.get("http://localhost:8082/BuddyTab/getIncomingFriends/" + username);
     }
 }

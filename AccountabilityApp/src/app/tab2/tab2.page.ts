@@ -17,7 +17,7 @@ export class Tab2Page {
   constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
-    let username = "ArchDruid"; // TODO: set this as logged in user
+    let username: string = "ArchDruid";
     this._http.getBuddies(username).subscribe(data => {
       this.buddies = data;
     })
