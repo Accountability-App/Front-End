@@ -14,16 +14,17 @@ export class Tab2Page {
 
   buddies: any;
   length: number;
+  username: string;
 
   constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
+    this.username = "Th3IronDruid";
     this.getBuddies();
   }
 
   async getBuddies() {
-    let username: string = "ArchDruid";
-    this.buddies = await this._http.getBuddies(username).toPromise();
+    this.buddies = await this._http.getBuddies(this.username).toPromise();
     this.length = this.buddies.length;
   }
 

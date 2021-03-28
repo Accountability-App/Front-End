@@ -12,26 +12,22 @@ export class ProfilePage implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private _http: HttpService) { }
 
   exists: boolean = true;
-  username: string = "ArchDruid";
+  username: string;
   otherUsername: string;
+  name: string;
   friendStatus: number;
   friendData: any;
 
   ngOnInit() {
+    this.username = "Th3IronDruid";
     this.getFriendData();
-  }
-
-  ngAfterViewInit() {
-    let element = document.getElementById("username-field");
-    if (element) {
-      element.textContent = this.otherUsername;
-    }
   }
 
   async getFriendData() {
     this.otherUsername = this.route.snapshot.params.id;
-    const data = await this._http.getFriendStatus(this.username, this.otherUsername).toPromise();
-    this.friendStatus = data['friendStatus'];
+    this.friendData = await this._http.getFriendStatus(this.username, this.otherUsername).toPromise();
+    this.friendStatus = this.friendData['friendStatus'];
+    this.name = this.friendData['givenName'] + ' ' + this.friendData['familyName'];
   }
 
   close() {
@@ -40,23 +36,22 @@ export class ProfilePage implements OnInit {
 
   addUser() {
     this.friendStatus = 3;
-    // TODO: add http request 
+    let data = this._http.addUser(this.username, this.otherUsername);
+    console.log(data);
   }
 
   removeUser() {
     this.friendStatus = 0;
-    // TODO: add http request
+    this._http.removeUser(this.username, this.otherUsername);
   }
 
   acceptRequest() {
     this.friendStatus = 1;
-    // TODO: add http request
+    this._http.acceptRequest(this.username, this.otherUsername);
   }
 
   cancelRequest() {
     this.friendStatus = 0;
-    // TODO: add http request
+    this._http.cancelRequest(this.username, this.otherUsername);
   }
-
-
 }
