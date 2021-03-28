@@ -9,19 +9,38 @@
 <ion-content [fullscreen]="true">
   <div *ngIf="exists; else noUser">
     <ion-card>
-      <ion-card-content body>
-        <ion-label id="name-field" class="username-label" color="dark" slot="start">username</ion-label>
+      <ion-item>
         <ion-avatar slot="start">
           <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
         </ion-avatar>
-        Bottom text.
-      </ion-card-content>
+        <ion-label>
+          <h3>{{ otherUsername }}</h3>
+          <p>firstname lastname</p>
+        </ion-label>
+        <ion-row>
+          <div *ngIf="friends">
+            <ion-col>
+              <ion-button color="danger" (click)="addUser(otherUsername)"><ion-icon name="close-outline"></ion-icon></ion-button>
+            </ion-col>
+          </div>
+          <div *ngIf="notFriends">
+            <ion-col>
+              <ion-button color="primary" (click)="addUser(otherUsername)"><ion-icon name="add-outline"></ion-icon></ion-button>
+            </ion-col>
+          </div>
+          <div *ngIf="incomingRequest">
+            <ion-col>
+              <ion-button color="primary" (click)="addUser(otherUsername)"><ion-icon name="add-outline"></ion-icon></ion-button>
+            </ion-col>
+          </div>
+          <div *ngIf="outgoingRequest">
+            <ion-col>
+              <ion-button color="medium" (click)="addUser(otherUsername)"><ion-icon name="timer-outline"></ion-icon></ion-button>
+            </ion-col>
+          </div>
+        </ion-row>
+      </ion-item>
     </ion-card>
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block">Add Buddy</ion-button>
-      </ion-col>
-    </ion-row>
   </div>
   <ng-template #noUser>
     <div class="ion-text-center ion-margin-top">
