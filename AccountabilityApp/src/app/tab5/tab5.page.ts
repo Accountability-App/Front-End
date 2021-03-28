@@ -32,7 +32,7 @@ export class Tab5Page {
       console.log(this.profileData);
     })
 
-    this._http.getLocalData().subscribe(data => {
+    this._http.getTaskData().subscribe(data => {
       this.localDataTest = data;
       console.log(this.localDataTest);
     })

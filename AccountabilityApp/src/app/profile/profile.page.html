@@ -9,19 +9,25 @@
 <ion-content [fullscreen]="true">
   <div *ngIf="exists; else noUser">
     <ion-card>
-      <ion-card-content body>
-        <ion-label id="name-field" class="username-label" color="dark" slot="start">username</ion-label>
-        <ion-avatar slot="start">
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-        </ion-avatar>
-        Bottom text.
-      </ion-card-content>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-avatar>
+          <ion-label>
+            <h3 id="username-field">username</h3>
+            <p>firstname lastname</p>
+          </ion-label>
+          <div *ngIf="notFriends">
+            <ion-button><ion-icon name="add-outline"></ion-icon></ion-button>
+          </div>
+          <div *ngIf="outgoingRequest">
+            <ion-button color="medium"><ion-icon name="timer-outline"></ion-icon></ion-button>
+          </div>
+          <div *ngIf="friends">
+            <ion-button color="danger"><ion-icon name="close-outline"></ion-icon></ion-button>
+          </div>
+        </ion-item>
     </ion-card>
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block">Add Buddy</ion-button>
-      </ion-col>
-    </ion-row>
   </div>
   <ng-template #noUser>
     <div class="ion-text-center ion-margin-top">

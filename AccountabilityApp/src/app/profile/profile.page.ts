@@ -10,21 +10,22 @@ export class ProfilePage implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
-  exists = true;
+  exists: boolean = true;
   username: string;
+
+  friends: boolean = true;
+  notFriends: boolean = false;
+  outgoingRequest: boolean = false;
+  incomingRequest: boolean = false;
 
   ngOnInit() {
     this.username = this.route.snapshot.params.id;
-    console.log(this.username);
   }
 
   ngAfterViewInit() {
-    let element = document.getElementById("name-field");
+    let element = document.getElementById("username-field");
     if (element) {
       element.textContent = this.username;
-    }
-    else {
-      console.log("fail");
     }
   }
 
