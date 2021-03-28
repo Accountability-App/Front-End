@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PopoverController, ModalController } from '@ionic/angular';
-import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
-import { ProfileModalComponent } from '../profile-modal/profile-modal.component';
+// import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
+// import { ProfileModalComponent } from '../profile-modal/profile-modal.component';
 import { HttpService } from './http.service';
 
 

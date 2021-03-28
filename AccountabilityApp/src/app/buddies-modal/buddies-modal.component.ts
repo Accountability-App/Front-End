@@ -13,15 +13,18 @@ import { Router } from '@angular/router';
 export class BuddiesModalComponent implements OnInit {
 
   requests: any;
+  length: number;
 
   constructor(public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
+    this.getRequests();
+  }
+
+  async getRequests() {
     let username: string = "ArchDruid";
-    this._http.getRequests(username).subscribe(data => {
-      this.requests = data;
-      console.log(this.requests);
-    })
+    this.requests = await this._http.getRequests(username).toPromise();
+    this.length = this.requests.length;
   }
 
   dismiss() {

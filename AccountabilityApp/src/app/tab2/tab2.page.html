@@ -19,7 +19,7 @@
       </ion-col>
     </ion-row>
 
-    <div *ngIf="buddies; else noBuddies">
+    <div *ngIf="length != 0; else noBuddies">
       <ion-list>
         <ion-item *ngFor="let buddy of buddies">
           <ion-avatar slot="start">

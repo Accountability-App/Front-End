@@ -18,24 +18,24 @@
           <p>firstname lastname</p>
         </ion-label>
         <ion-row>
-          <div *ngIf="friends">
+          <div *ngIf="friendStatus == 0">
             <ion-col>
-              <ion-button color="danger" (click)="addUser(otherUsername)"><ion-icon name="close-outline"></ion-icon></ion-button>
+              <ion-button color="primary" (click)="addUser()"><ion-icon name="add-outline"></ion-icon></ion-button>
             </ion-col>
           </div>
-          <div *ngIf="notFriends">
+          <div *ngIf="friendStatus == 1">
             <ion-col>
-              <ion-button color="primary" (click)="addUser(otherUsername)"><ion-icon name="add-outline"></ion-icon></ion-button>
+              <ion-button color="danger" (click)="removeUser()"><ion-icon name="close-outline"></ion-icon></ion-button>
             </ion-col>
           </div>
-          <div *ngIf="incomingRequest">
+          <div *ngIf="friendStatus == 2">
             <ion-col>
-              <ion-button color="primary" (click)="addUser(otherUsername)"><ion-icon name="add-outline"></ion-icon></ion-button>
+              <ion-button color="primary" (click)="acceptRequest()"><ion-icon name="add-outline"></ion-icon></ion-button>
             </ion-col>
           </div>
-          <div *ngIf="outgoingRequest">
+          <div *ngIf="friendStatus == 3">
             <ion-col>
-              <ion-button color="medium" (click)="addUser(otherUsername)"><ion-icon name="timer-outline"></ion-icon></ion-button>
+              <ion-button color="medium" (click)="cancelRequest()"><ion-icon name="timer-outline"></ion-icon></ion-button>
             </ion-col>
           </div>
         </ion-row>

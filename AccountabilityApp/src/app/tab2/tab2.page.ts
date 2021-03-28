@@ -12,15 +12,19 @@ import { HttpService } from './http.service';
 })
 export class Tab2Page {
 
-  buddies: Object;
+  buddies: any;
+  length: number;
 
   constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
+    this.getBuddies();
+  }
+
+  async getBuddies() {
     let username: string = "ArchDruid";
-    this._http.getBuddies(username).subscribe(data => {
-      this.buddies = data;
-    })
+    this.buddies = await this._http.getBuddies(username).toPromise();
+    this.length = this.buddies.length;
   }
 
   async presentPopover(event) {

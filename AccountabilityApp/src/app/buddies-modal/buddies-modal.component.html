@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div *ngIf="requests; else noRequests">
+  <div *ngIf="length != 0; else noRequests">
     <ion-list *ngIf="requests">
       <ion-item *ngFor="let request of requests">
         <ion-avatar slot="start">
