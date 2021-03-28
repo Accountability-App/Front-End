@@ -1,0 +1,30 @@
+[{
+    "username": "sample1",
+    "firstname": "joe",
+    "lastname": "miner",
+    "tag": "@JOEYBOI",
+    "description": "My name is joe and I'm 100% a real person.",
+    "profile_id": "00000000"
+},{
+    "username": "da_second_sample",
+    "firstname": "samatha",
+    "lastname": "waltersonfordmin",
+    "tag": "@sammy_is_here",
+    "description": "I am not a bot, please listen to my advice",
+    "profile_id": "45454545"
+},{
+    "username": "mol_tres",
+    "firstname": "Ash",
+    "lastname": "Ketchup",
+    "tag": "@the_very_best",
+    "description": "Me and my pal pikachu travel the world or something like that",
+    "profile_id": "90000011"
+},{
+    "username": "undefined",
+    "firstname": "not",
+    "lastname": "listed",
+    "tag": "@me",
+    "description": "insert description here",
+    "profile_id": "99999999"
+}
+]

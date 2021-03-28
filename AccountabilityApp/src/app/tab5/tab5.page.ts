@@ -4,6 +4,11 @@ import { ProfilePopoverComponent } from '../profile-popover/profile-popover.comp
 import { ProfileModalComponent } from '../profile-modal/profile-modal.component';
 import { HttpService } from './http.service';
 
+/* LOG OUT */
+import { Router } from '@angular/router';
+import { AuthenticationService } from './../services/authentication.service';
+
+
 @Component({
   selector: 'app-tab5',
   templateUrl: 'tab5.page.html',
@@ -21,7 +26,7 @@ export class Tab5Page {
   description: Object;
   */
 
-  constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService) { }
+  constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService,private authService: AuthenticationService, private router: Router) { }
 
   //TODO: include data for background picture (backPic) and profile picture (profPic)
 
@@ -65,6 +70,11 @@ export class Tab5Page {
       component: ProfileModalComponent
     });
     return await modal.present();
+  }
+
+  async logout() {
+    await this.authService.logout();
+    this.router.navigateByUrl('/', { replaceUrl: true });
   }
 
 }

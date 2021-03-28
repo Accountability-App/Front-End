@@ -1,9 +1,70 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Add A Task</ion-title>
+    <ion-title>
+      Create New Task
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Replace with your code"></app-explore-container>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Create New Task</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<!-- <ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime> -->
+
+<ion-item>
+  <!-- TASK NAME -->
+  <!-- Input with value -->
+  <!-- Input with clear button when there is a value -->
+  <!-- NOTE: CLEAR ON EDIT IS NOT WORKING HERE GO BACK TO THIS -->
+  <ion-input placeholder value="taskName" clear-input="true" [(ngModel)]="taskName"></ion-input>
+</ion-item>
+
+<ion-item><!-- TASK NOTES? -->
+  <!-- NOTE: CLEAR ON EDIT IS NOT WORKING HERE GO BACK TO THIS -->
+  <ion-input placeholder value="taskDesc" clear-input="true" [(ngModel)]="taskDesc"></ion-input>
+</ion-item>
+
+<!-- DUE DATE -->
+<ion-item>
+  <ion-label>Due Date</ion-label>
+  <ion-datetime pickerFormat="MM/DD/YYYY" [min]="date" [max]="maxDate" [placeholder]="currYear" [(ngModel)]="dueDate"></ion-datetime>
+</ion-item>
+
+<ion-item>  <!-- TIME -->
+  <ion-label>Time</ion-label>
+  <ion-datetime display-format="h:mm A" pickerFormat="h:mm A" [placeholder]="currTime" [(ngModel)]="dueTime"></ion-datetime>
+  <!-- <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime> -->
+</ion-item>
+
+<!-- REPEATS? -->
+<ion-item>
+  <ion-label>Repeats</ion-label>
+  <!-- Checked Checkbox -->
+  <!-- <ion-checkbox checked="false" color="secondary"></ion-checkbox> -->
+  <ion-toggle [(ngModel)]="repeat" checked="false" color=tertiary name="repeatButton" (click)="presentModal()"></ion-toggle>
+</ion-item>
+
+  <!-- PROMPTS FOR REPEAT INFORMATION -->
+  <!-- I BELIEVE THIS SHOULD BE A MODAL -->
+
+<!-- BUDDY(S) -->
+<ion-item>
+  <ion-label>Buddies</ion-label>
+    <ion-select multiple="true" cancelText="Cancel" okText="Done">
+      <ion-select-option *ngFor="let b of buddies" [(ngModel)]="pickedBuddies">{{b}}</ion-select-option>
+    </ion-select>
+</ion-item>
+
+<!-- SUBMIT / CANCEL BUTTON -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-button strong=true type=submit expand="block" size="default">Submit</ion-button>
+    <ion-button type=reset expand="block" size="default" slot="end">Cancel</ion-button>
+  </ion-toolbar>  
+</ion-footer>
+
 </ion-content>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AuthenticationService } from './../services/authentication.service';
 
 
 
@@ -13,7 +15,7 @@ export class ProfileModalComponent implements OnInit {
 
   profileData: any;
 
-  constructor(public modalController: ModalController, private _http: HttpService) { }
+  constructor(public modalController: ModalController, private _http: HttpService, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this._http.getData().subscribe(data => {
@@ -35,4 +37,11 @@ export class ProfileModalComponent implements OnInit {
     console.log("Done.");
     this.dismiss();
   }
+
+  async logout() {
+    await this.authService.logout();
+    this.router.navigateByUrl('/', { replaceUrl: true });
+    this.dismiss();
+  }
+
 }

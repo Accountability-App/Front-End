@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AccountabilityApp</string>
+    <string name="title_activity_main">AccountabilityApp</string>
+    <string name="package_name">com.buddies.bud</string>
+    <string name="fileprovider_authority">com.buddies.bud.fileprovider</string>
+    <string name="custom_url_scheme">com.buddies.bud</string>
+    <string name="server_client_id">748333271029-gkj2hrr79rec517ascp9iuf3oaohaevl.apps.googleusercontent.com</string>
+</resources>
