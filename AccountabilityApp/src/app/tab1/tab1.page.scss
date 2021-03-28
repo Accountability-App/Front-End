@@ -4,7 +4,8 @@ ion-item{
 }
     
 ion-item-divider{
-    --ion-background-color:#537345;
+    --ion-background-color:#006600;
+    --ion-text-color: #b3ffb3;
 }
 
 ion-item-divider:hover{
@@ -12,9 +13,13 @@ ion-item-divider:hover{
 }
 
 ion-toolbar{
-    --ion-background-color:#876767;
+    --ion-background-color:#313131;
+    --ion-text-color: #7FB069;
 }
-    
+ion-card{
+    --ion-background-color:#313131;
+
+}
 ion-content{
     --ion-background-color:#7FB069;
 }

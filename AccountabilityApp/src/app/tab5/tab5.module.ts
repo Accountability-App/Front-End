@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { Tab5Page } from './tab5.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-import { ProfilePopoverComponent } from "../profile-popover/profile-popover.component"
+import { ProfilePopoverComponent } from "../profile-popover/profile-popover.component";
 
 import { Tab5PageRoutingModule } from './tab5-routing.module';
 

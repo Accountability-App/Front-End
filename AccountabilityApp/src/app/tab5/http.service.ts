@@ -8,12 +8,15 @@ export class HttpService {
     constructor(private http: HttpClient) { }
 
     getData() {
-        return this.http.get("assets/profileSample.json");
+        return this.http.get("http://localhost:8082/ProfileTab/ArchDruid");
     }
 
     getTaskData() {
         return this.http.get("assets/taskSample.json")
     }
 
+    getLocalData () {
+        return this.http.get("assets/profileSample.json");
+    }
 
 }

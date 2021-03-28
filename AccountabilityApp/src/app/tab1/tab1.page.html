@@ -7,30 +7,41 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-item>Profile Id is {{ profileData[0].profile_id }}</ion-item>
-  <span *ngFor="let curr_task of taskData">
-    <span *ngIf="profileData[0].profile_id == curr_task.profile_id">
-        <ion-item-divider><h3>{{ curr_task.title_of_task }}</h3>
-          <ion-button href="#">
-            <ion-icon slot="start" name="trash-outline"></ion-icon>
-            Delete Task
-          </ion-button>
-        </ion-item-divider>
-        <ion-card><ion-card-content>
-          Description: {{ curr_task.description_of_task }}
-          <br>
-          Time: {{ curr_task.time_of_task }}
-          <br>
-          Date: {{ curr_task.date_of_task }}
-          <br>
-        <span *ngFor="let curr_prof of profileData">
-          <span *ngIf="curr_task.helper_id == curr_prof.profile_id">
-              Helper: {{ curr_prof.username }}
-          </span>
+  <div *ngIf="profileData; else noProfileData">
+    <ion-item>Profile Id is {{ profileData[0].profile_id }}</ion-item>
+  </div>
+  <ng-template #noProfileData>
+    <ion-item>Profile Id is currently not available.</ion-item>
+  </ng-template>
+  <div *ngIf="taskData; else noTaskData">
+    <div *ngIf="profileData; else noProfileData">
+      <span *ngFor="let curr_task of taskData">
+        <span *ngIf="profileData[0].profile_id == curr_task.profile_id">
+            <ion-item-divider>
+              <h3>{{ curr_task.title_of_task }}</h3>
+            </ion-item-divider>
+            <ion-card><ion-card-content>
+              Description: {{ curr_task.description_of_task }}
+              <br>
+              Time: {{ curr_task.time_of_task }}
+              <br>
+              Date: {{ curr_task.date_of_task }}
+              <br>
+            <span *ngFor="let curr_prof of profileData">
+              <span *ngIf="curr_task.helper_id == curr_prof.profile_id">
+                  Helper: {{ curr_prof.username }}
+              </span>
+            </span>
+            <br>
+            <ion-button size="small" color="danger" href="#">
+              <ion-icon slot="start" name="trash-outline"></ion-icon>
+              Delete Task
+            </ion-button>
+            </ion-card-content></ion-card>
         </span>
-        </ion-card-content></ion-card>
-    </span>
-  </span>
-
+      </span>
+    </div>
+  </div>
 
 </ion-content>
+
