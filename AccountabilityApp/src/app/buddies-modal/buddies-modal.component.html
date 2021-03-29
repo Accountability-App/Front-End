@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div *ngIf="requests; else noRequests">
+  <div *ngIf="length != 0; else noRequests">
     <ion-list *ngIf="requests">
       <ion-item *ngFor="let request of requests">
         <ion-avatar slot="start">
@@ -22,7 +22,7 @@
             <ion-button color="success" (click)="accept(request.username)"><ion-icon name="checkmark"></ion-icon></ion-button>
           </ion-col>
           <ion-col>
-            <ion-button color="danger" (click)="removeRequest(request.username)"><ion-icon name="close"></ion-icon></ion-button>
+            <ion-button color="danger" (click)="deny(request.username)"><ion-icon name="close"></ion-icon></ion-button>
           </ion-col>
           <ion-col>
             <ion-button (click)="visitProfile(request.username)"><ion-icon name="search"></ion-icon></ion-button>
