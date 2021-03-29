@@ -19,7 +19,7 @@ export class ProfilePage implements OnInit {
   friendData: any;
 
   ngOnInit() {
-    this.username = "Th3IronDruid";
+    this.username = "RoketWarrior";
     this.getFriendData();
   }
 
@@ -36,8 +36,7 @@ export class ProfilePage implements OnInit {
 
   addUser() {
     this.friendStatus = 3;
-    let data = this._http.addUser(this.username, this.otherUsername);
-    console.log(data);
+    this._http.addUser(this.username, this.otherUsername);
   }
 
   removeUser() {

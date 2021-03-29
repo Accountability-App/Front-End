@@ -19,7 +19,7 @@ export class BuddiesModalComponent implements OnInit {
   constructor(public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
-    this.username = "Th3IronDruid";
+    this.username = "RoketWarrior";
     this.getRequests();
   }
 

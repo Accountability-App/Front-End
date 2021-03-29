@@ -19,7 +19,7 @@ export class Tab2Page {
   constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
-    this.username = "Th3IronDruid";
+    this.username = "RoketWarrior";
     this.getBuddies();
   }
 
