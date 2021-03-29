@@ -11,11 +11,11 @@ export class HttpService {
         return this.http.get("http://localhost:8082/BuddyTab/getIncomingFriends/" + username);
     }
 
-    acceptRequest(username1: string, username2: string) {
-        return this.http.get("http://localhost:8082/BuddyTab/respondToFriendRequest/" + username1 + "/" + username2 + "/Accept");
+    async acceptRequest(username1: string, username2: string) {
+        await this.http.get("http://localhost:8082/BuddyTab/respondToFriendRequest/" + username1 + "/" + username2 + "/Accept").toPromise();
     }
 
-    denyRequest(username1: string, username2: string){
-        return this.http.get("http://localhost:8082/BuddyTab/respondToFriendRequest/" + username1 + "/" + username2 + "/Deny");
+    async denyRequest(username1: string, username2: string){
+        await this.http.get("http://localhost:8082/BuddyTab/respondToFriendRequest/" + username1 + "/" + username2 + "/Deny").toPromise();
     }
 }
