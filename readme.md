@@ -1,3 +1,7 @@
+## Required Tools
+
+Must have node (npm) installed
+
 ## Installation
 
 ```
