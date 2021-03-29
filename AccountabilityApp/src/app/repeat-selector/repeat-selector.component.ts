@@ -18,8 +18,8 @@ export class RepeatSelectorComponent{
   dismiss() {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
-    alert(this.pickedEndTime)
-    alert(this.pickedDays)
+    // alert(this.pickedEndTime)
+    // alert(this.pickedDays)
     this.modalController.dismiss({//uhh idk
       'dismissed': true
     });
