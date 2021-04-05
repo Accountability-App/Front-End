@@ -16,5 +16,8 @@ export class HttpService {
         return this.http.get("assets/taskSample.json")
     }
 
+    getLocalData () {
+        return this.http.get("assets/profileSample.json");
+    }
 
 }

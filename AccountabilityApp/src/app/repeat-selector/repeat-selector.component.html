@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Repeat Params
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Repeat Params</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<!-- WHAT WE NEED -->
+<!-- REPEAT DAYS OF THE WEEK -->
+<!-- CHECK EACH DAY -->
+<!-- BUDDY(S) -->
+<ion-item>
+  <ion-label>Days</ion-label>
+    <ion-select multiple="true" cancelText="Cancel" okText="Done" [(ngModel)]="pickedDays">
+      <ion-select-option value="Sunday">Sunday</ion-select-option>
+      <ion-select-option value="Monday">Monday</ion-select-option>
+      <ion-select-option value="Tuesday">Tuesday</ion-select-option>
+      <ion-select-option value="Wednesday">Wednesday</ion-select-option>
+      <ion-select-option value="Thursday">Thursday</ion-select-option>
+      <ion-select-option value="Friday">Friday</ion-select-option>
+      <ion-select-option value="Saturday">Saturday</ion-select-option>
+    </ion-select>
+</ion-item>
+
+<!-- END DATE -->
+<ion-item>
+  <ion-label>End Date</ion-label>
+  <ion-datetime pickerFormat="MM/DD/YYYY" [min]="date" [max]="maxDate" [placeholder]="currYear" [(ngModel)]="pickedEndTime"></ion-datetime>
+  <!-- <ion-datetime pickerFormat="MM/DD/YYYY" [min]="date" [max]="maxDate" [placeholder]="currYear"></ion-datetime> -->
+</ion-item>
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button strong=true type=submit expand="block" size="default" (click)="dismiss()">Done</ion-button>
+    <ion-button type=reset expand="block" size="default" slot="end" (click)="cancelled()">Cancel</ion-button>
+  </ion-toolbar>  
+</ion-footer>
+

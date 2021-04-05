@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PopoverController, ModalController } from '@ionic/angular';
-import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
-import { ProfileModalComponent } from '../profile-modal/profile-modal.component';
+//import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
+//import { ProfileModalComponent } from '../profile-modal/profile-modal.component';
 import { HttpService } from './http.service';
 
 
@@ -14,7 +14,7 @@ export class Tab1Page {
   taskData: Object;
   profileData: Object;
 
-  constructor(public popoverController: PopoverController, public modalController: ModalController, private _http: HttpService) { }
+  constructor(private _http: HttpService) { }
 
 
   ngOnInit() {
@@ -27,4 +27,5 @@ export class Tab1Page {
       console.log(this.profileData);
     })
   }
+
 }

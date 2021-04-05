@@ -12,16 +12,20 @@ import { Router } from '@angular/router';
 })
 export class BuddiesModalComponent implements OnInit {
 
+  username: string;
   requests: any;
+  length: number;
 
   constructor(public modalController: ModalController, private _http: HttpService, private router: Router) { }
 
   ngOnInit() {
-    let username: string = "ArchDruid";
-    this._http.getRequests(username).subscribe(data => {
-      this.requests = data;
-      console.log(this.requests);
-    })
+    this.username = "RoketWarrior";
+    this.getRequests();
+  }
+
+  async getRequests() {
+    this.requests = await this._http.getRequests(this.username).toPromise();
+    this.length = this.requests.length;
   }
 
   dismiss() {
@@ -31,14 +35,18 @@ export class BuddiesModalComponent implements OnInit {
   }
 
   accept(username: string) {
-    // TODO: add to buddies list (database)
+    let data = this._http.acceptRequest(this.username, username);
+    console.log(data);
+    this.removeRequest(username);
+  }
 
+  deny(username: string) {
+    let data = this._http.denyRequest(this.username, username);
+    console.log(data);
     this.removeRequest(username);
   }
 
   removeRequest(request: string) {
-    // TODO: remove from requests (database)
-
     let index = this.requests.map(function(rq) { return rq.username; }).indexOf(request);
 
     if(index > -1){
