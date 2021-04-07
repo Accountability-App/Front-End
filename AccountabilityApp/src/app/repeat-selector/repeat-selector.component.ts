@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -6,30 +6,42 @@ import { ModalController } from '@ionic/angular';
   templateUrl: './repeat-selector.component.html',
   styleUrls: ['./repeat-selector.component.scss'],
 })
-export class RepeatSelectorComponent{
+export class RepeatSelectorComponent implements OnInit{
 
   //vars to send
-  pickedDays: [string] = ["empty"];
-  pickedEndTime: any = null;
+  @Input('repeatFlag') repeatFlag: boolean;
+  @Input('repeatDays') repeatDays: [string];
+  @Input('repeatEndDate') repeatEndDate: Date;
+
+  // pickedDays: [string] = ["empty"];
+  // pickedEndTime: any = null;
 
   constructor(public modalController: ModalController) { }
 
 
-  dismiss() {
+  async closeModal() {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
     // alert(this.pickedEndTime)
     // alert(this.pickedDays)
-    this.modalController.dismiss({//uhh idk
-      'dismissed': true
-    });
+    await this.modalController.dismiss({ repeatData: [this.repeatFlag, this.repeatDays, this.repeatEndDate] });
+  }
+
+  save()
+  {
+    this.repeatCancel=false
+    this.repeatFlag=true
+    this.closeModal()
   }
 
   cancelled()
   {
     this.repeatCancel=true
-    this.dismiss()
+    this.repeatFlag=false
+    this.closeModal()
   }
+
+  ngOnInit() {}
 
   //vars
   public repeatCancel: boolean = false

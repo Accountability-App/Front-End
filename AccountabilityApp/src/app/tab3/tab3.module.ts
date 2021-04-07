@@ -17,11 +17,20 @@ import { RepeatSelectorComponent } from '../repeat-selector/repeat-selector.comp
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: Tab3Page }]),
+    RouterModule.forChild([
+      {
+        path: '', 
+        component: Tab3Page 
+      }
+    ]),
     Tab3PageRoutingModule,
+    // RepeatSelectorComponent,
   ],
   declarations: [Tab3Page, RepeatSelectorComponent],
+  // declarations: [Tab3Page],
 
-  entryComponents: [RepeatSelectorComponent]
+  entryComponents: [RepeatSelectorComponent], 
+
+  exports: [RepeatSelectorComponent],
 })
 export class Tab3PageModule {}
