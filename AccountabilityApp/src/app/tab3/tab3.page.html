@@ -30,6 +30,14 @@
       <ion-input name="TaskDescInput" placeholder="Task Description" required=true clearInput=true [(ngModel)]="taskDesc"></ion-input>
     </ion-item>
 
+    <!-- REPEATS? -->
+    <ion-item>
+      <ion-label>Repeats (Weekly)</ion-label>
+      <!-- Checked Checkbox -->
+      <!-- <ion-checkbox checked="false" color="secondary"></ion-checkbox> -->
+      <ion-toggle [(ngModel)]="repeatFlag" [checked]="repeatFlag" color=tertiary name="repeatButton" (click)="toggleChange()"></ion-toggle>
+    </ion-item>
+
     <!-- DUE DATE -->
     <ion-item>
       <ion-label>Due Date</ion-label>
@@ -37,18 +45,12 @@
     </ion-item>
 
     <ion-item>  <!-- TIME -->
-      <ion-label>Time</ion-label>
+      <ion-label>Due Time</ion-label>
       <ion-datetime name="DueTimePicker" required=true display-format="h:mm A" pickerFormat="h:mm A" [placeholder]="currTime" [(ngModel)]="dueTime"></ion-datetime>
       <!-- <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime> -->
     </ion-item>
 
-    <!-- REPEATS? -->
-    <ion-item>
-      <ion-label>Repeats (Weekly)</ion-label>
-      <!-- Checked Checkbox -->
-      <!-- <ion-checkbox checked="false" color="secondary"></ion-checkbox> -->
-      <ion-toggle [(ngModel)]="repeatFlag" checked="false" color=tertiary name="repeatButton" (click)="presentModal()"></ion-toggle>
-    </ion-item>
+
 
     <!-- PROMPTS FOR REPEAT INFORMATION -->
     <!-- I BELIEVE THIS SHOULD BE A MODAL -->

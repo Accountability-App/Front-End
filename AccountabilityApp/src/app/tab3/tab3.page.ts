@@ -1,4 +1,5 @@
 import { Time } from '@angular/common';
+import { JsonpClientBackend } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { resetFakeAsyncZone } from '@angular/core/testing';
 import { ModalController} from '@ionic/angular';
@@ -19,6 +20,20 @@ export class Tab3Page {
   // {
   //   this.getBuddyList();
   // }
+
+  toggleChange()
+  {
+
+    if (!this.repeatFlag)
+    {
+      this.presentModal()
+    }
+    else
+    {
+      this.repDays = null
+      this.repEndDate = null
+    }
+  }
   
   async presentModal() 
   {
@@ -33,7 +48,13 @@ export class Tab3Page {
     });
     await modal.present();
     modal.onDidDismiss()
-    .then( res => alert(JSON.stringify(res)) )
+    // .then( res => alert(JSON.stringify(res)) )
+    .then((repData) => {
+      this.repeatFlag = repData.data.repeatData[0]
+      this.repDays = repData.data.repeatData[1]
+      this.repEndDate = repData.data.repeatData[2]
+      });
+
   }
 
   // async getUser()
@@ -99,7 +120,7 @@ export class Tab3Page {
   //USER INPUT TO SAVE
   public taskName: string;
   public taskDesc: string;
-  public dueDate: Date;
+  public dueDate: string = this.date
   public dueTime: string;
   public repeatFlag: boolean = false;
   public repDays: [string];
