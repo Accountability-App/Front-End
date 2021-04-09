@@ -5,6 +5,10 @@ import { resetFakeAsyncZone } from '@angular/core/testing';
 import { ModalController} from '@ionic/angular';
 import { RepeatSelectorComponent } from '../repeat-selector/repeat-selector.component';
 import { HttpService } from './http.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Animation, AnimationController } from '@ionic/angular';
+
 
 
 @Component({
@@ -14,19 +18,21 @@ import { HttpService } from './http.service';
 })
 export class Tab3Page {
 
-  constructor(public modalController: ModalController, private _http: HttpService) {}
+  constructor(private modalController: ModalController, private _http: HttpService) {}
 
   // ngOnInit()
   // {
   //   this.getBuddyList();
   // }
 
+
+
   toggleChange()
   {
 
     if (!this.repeatFlag)
     {
-      this.presentModal()
+      // this.presentModal()
     }
     else
     {

@@ -31,17 +31,37 @@
     </ion-item>
 
     <!-- REPEATS? -->
-    <ion-item>
+    <ion-item class="itemOpener">
       <ion-label>Repeats (Weekly)</ion-label>
       <!-- Checked Checkbox -->
       <!-- <ion-checkbox checked="false" color="secondary"></ion-checkbox> -->
       <ion-toggle [(ngModel)]="repeatFlag" [checked]="repeatFlag" color=tertiary name="repeatButton" (click)="toggleChange()"></ion-toggle>
     </ion-item>
 
+    <ion-item class="toggleItems" [class.opened]="repeatFlag">
+      <ion-label>Days</ion-label>
+        <ion-select name="DaySelection" [required]="repeatFlag" multiple="true" cancelText="Cancel" okText="Done" [(ngModel)]="repeatDays">
+          <ion-select-option value="Sunday">Sunday</ion-select-option>
+          <ion-select-option value="Monday">Monday</ion-select-option>
+          <ion-select-option value="Tuesday">Tuesday</ion-select-option>
+          <ion-select-option value="Wednesday">Wednesday</ion-select-option>
+          <ion-select-option value="Thursday">Thursday</ion-select-option>
+          <ion-select-option value="Friday">Friday</ion-select-option>
+          <ion-select-option value="Saturday">Saturday</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <!-- END DATE -->
+    <ion-item class="toggleItems" [class.opened]="repeatFlag">
+      <ion-label>Repeat Until</ion-label>
+      <ion-datetime name="RepeatEndDate" [required]="repeatFlag" pickerFormat="MM/DD/YYYY" [min]="date" [max]="maxDate" [placeholder]="currYear" [(ngModel)]="repeatEndDate"></ion-datetime>
+      <!-- <ion-datetime pickerFormat="MM/DD/YYYY" [min]="date" [max]="maxDate" [placeholder]="currYear"></ion-datetime> -->
+    </ion-item>
+
     <!-- DUE DATE -->
-    <ion-item>
+    <ion-item class="toggleItems" [class.opened]="!repeatFlag">
       <ion-label>Due Date</ion-label>
-      <ion-datetime name="DueDatePicker" required=true pickerFormat="MM/DD/YYYY" [min]="date" [max]="maxDate" [placeholder]="currYear" [(ngModel)]="dueDate"></ion-datetime>
+      <ion-datetime name="DueDatePicker" [required]="!repeatFlag" pickerFormat="MM/DD/YYYY" [min]="date" [max]="maxDate" [placeholder]="currYear" [(ngModel)]="dueDate"></ion-datetime>
     </ion-item>
 
     <ion-item>  <!-- TIME -->
