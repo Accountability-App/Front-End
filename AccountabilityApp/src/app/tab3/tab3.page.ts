@@ -1,13 +1,9 @@
 import { Time } from '@angular/common';
-import { JsonpClientBackend } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { resetFakeAsyncZone } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ModalController} from '@ionic/angular';
 import { RepeatSelectorComponent } from '../repeat-selector/repeat-selector.component';
 import { HttpService } from './http.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { Animation, AnimationController } from '@ionic/angular';
 
 
 
@@ -16,16 +12,17 @@ import { Animation, AnimationController } from '@ionic/angular';
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page {
+export class Tab3Page implements OnInit {
 
-  constructor(private modalController: ModalController, private _http: HttpService) {}
+  constructor(private modalController: ModalController, private _http: HttpService, private router: Router) {}
 
-  // ngOnInit()
-  // {
-  //   this.getBuddyList();
+  ngOnInit()
+  {
+
+  }
+  // async getBuddies() {
+  //   this.buddies = await this._http.getBuddies(this.username).toPromise();
   // }
-
-
 
   toggleChange()
   {
@@ -63,46 +60,24 @@ export class Tab3Page {
 
   }
 
-  // async getUser()
-  // {
-  //   this._http.getData().subscribe(data => {
-  //     this.username = data;
-  //     console.log(this.profileData);
-  //     })
+  reset()
+  {
+    alert("Reset all entries")
+    // this.router.navigateByUrl('/tabs/tab3')
+    window.location.reload(true)
     
-  // }
-
-  // async getBuddyList()
-  // {
-  //   //WE NEED CURRENT USER FOR THIS
-  //   this.buddies = await this._http.getBuddies(this.username).toPromise();
-
-  // }
-
-  // sendTask()
-  // {
-  //   //
-  //   let taskData = 
-  //   {
-  //     "title_of_task": this.taskName,
-  //     "description_of_task": this.taskDesc,
-  //     "time_of_task": this.dueTime,
-  //     "date_of_task": this.dueDate,
-  //     "profile_id": "00000000",
-  //     "helper_id": "90000011",
-  //     "task_id": "00000002"
-  //     // and then we need to put in buddies and repeat data as well
-  //   };
-  // }
+  }
 
   save()
   {
     alert("Task Created");
+    this.router.navigateByUrl('/tabs/tab1');
   }
 
   cancelled()
   {
     alert("Cancelled");
+    this.router.navigateByUrl('/tabs/tab1');
   }
 
 

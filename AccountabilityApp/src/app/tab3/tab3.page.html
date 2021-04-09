@@ -4,16 +4,12 @@
     <ion-title>
       Create New Task
     </ion-title>
+    <ion-button type="reset" fill="clear" expand="block" size="small" slot="end" (click)="reset()">Reset</ion-button>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Create New Task</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <!-- <ion-datetime value="2019-10-01T15:43:40.394Z" display-timezone="utc"></ion-datetime> -->
   <form #frm="ngForm" novalidate (ngSubmit)="save()">
@@ -80,7 +76,7 @@
       <ion-label>Buddies</ion-label>
         <ion-select name="BuddySelection" multiple="true" required=true cancelText="Cancel" okText="Done" [(ngModel)]="pickedBuddies">
           <ion-select-option *ngFor="let b of buddies" >{{b}}</ion-select-option>
-        </ion-select>
+      </ion-select>
     </ion-item>
 
     <!-- SUBMIT / CANCEL BUTTON -->
