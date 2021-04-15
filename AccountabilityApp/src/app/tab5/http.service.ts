@@ -12,12 +12,5 @@ export class HttpService {
         return this.http.get("http://localhost:8082/ProfileTab/ArchDruid");
     }
 
-    getTaskData() {
-        return this.http.get("assets/taskSample.json")
-    }
-
-    getLocalData () {
-        return this.http.get("assets/profileSample.json");
-    }
 
 }
