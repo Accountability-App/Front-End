@@ -11,17 +11,17 @@
 <ion-content [fullscreen]="true">
 
   <ion-card>
-    <!-- TODO:  <div *ngIf="backPic; else noBackPic"> </div> -->
+    <!-- TODO If using background pictures in database:  <div *ngIf="backPic; else noBackPic"> </div> -->
     <div class="item default-profile-background"></div>
 
-    <ion-card-content body style="background-color:#FFFCD6">
+    <ion-card-content> <!--body style="background-color:#FFFCD6" -->
       <!-- If there is profileData supplied, show their data -->
       <div *ngIf="profileData; else noProfileData">
         <ion-label class="username-label" color="dark" slot="start">
         {{ profileData.firstname }}  @{{ profileData.username }}
         </ion-label>
 
-        <!-- TODO: <div *ngIf="profPic; else noProfPic"> </div> -->
+        <!-- TODO If using profile pictures in database: <div *ngIf="profPic; else noProfPic"> </div> -->
         <ion-avatar slot="start">
         <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
         </ion-avatar>
@@ -42,8 +42,9 @@
       </ng-template>
 
     </ion-card-content>
+  </ion-card>
 
-
+</ion-content>
 
     <!-- List of Tasks as List of Text Items
     <ion-list body style="background-color:#7FB069">
@@ -91,9 +92,7 @@
     </ion-list>
     -->
 
-  </ion-card>
 
-</ion-content>
 
   <!-- Me trying to get file upload and stuff to work
   <input type="file" (change)="loadImageFromDevice($event)" id="file-input"
