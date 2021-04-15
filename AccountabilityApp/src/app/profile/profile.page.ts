@@ -26,8 +26,12 @@ export class ProfilePage implements OnInit {
   async getFriendData() {
     this.otherUsername = this.route.snapshot.params.id;
     this.friendData = await this._http.getFriendStatus(this.username, this.otherUsername).toPromise();
-    this.friendStatus = this.friendData['friendStatus'];
-    this.name = this.friendData['givenName'] + ' ' + this.friendData['familyName'];
+    if (this.friendData.friendStatus === -1) {
+      this.exists = false;
+    } else {
+      this.friendStatus = this.friendData['friendStatus'];
+      this.name = this.friendData['givenName'] + ' ' + this.friendData['familyName'];
+    }
   }
 
   close() {

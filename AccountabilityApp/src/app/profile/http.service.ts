@@ -15,8 +15,8 @@ export class HttpService {
         await this.http.get("http://localhost:8082/BuddyTab/makeFriendRequest/" + username1 + "/" + username2).toPromise();
     }
     
-    removeUser(username1: string, username2: string) {
-
+    async removeUser(username1: string, username2: string) {
+        await this.http.get("http://localhost:8082/BuddyTab/removeFriend/" + username1 + "/" + username2).toPromise();
     }
 
     async acceptRequest(username1: string, username2: string) {
