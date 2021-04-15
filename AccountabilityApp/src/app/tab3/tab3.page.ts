@@ -64,7 +64,7 @@ export class Tab3Page implements OnInit {
   {
     alert("Reset all entries")
     // this.router.navigateByUrl('/tabs/tab3')
-    window.location.reload(true)
+    // window.location.reload(true)
     
   }
 
