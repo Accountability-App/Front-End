@@ -7,12 +7,12 @@
 
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="profileData; else noProfileData">
+  <!-- <div *ngIf="profileData; else noProfileData">
     <ion-item>Profile Id is {{ profileData[0].profile_id }}</ion-item>
   </div>
   <ng-template #noProfileData>
     <ion-item>Profile Id is currently not available.</ion-item>
-  </ng-template>
+  </ng-template> -->
   <div *ngIf="taskData; else noTaskData">
     <div *ngIf="profileData; else noProfileData">
       <span *ngFor="let curr_task of taskData">
