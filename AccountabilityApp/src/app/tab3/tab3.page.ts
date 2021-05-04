@@ -5,20 +5,35 @@ import { ModalController} from '@ionic/angular';
 import { RepeatSelectorComponent } from '../repeat-selector/repeat-selector.component';
 import { HttpService } from './http.service';
 
+export interface Task 
+{
+  createdBy: String;
+  taskName: String;
+  details: String;
+  completeTime: String;
+  completeDay: String;
+  buddies: Array<string>;
+  repeat: boolean;
+  repWeekDay: Array<boolean>;
 
+}
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
+
 export class Tab3Page implements OnInit {
 
   constructor(private modalController: ModalController, private _http: HttpService, private router: Router) {}
 
-  ngOnInit()
-  {
 
+  async ngOnInit()
+  {
+    this.username = "RoketWarrior";
+    this.buddies = await this._http.getBuddies(this.username).toPromise();
+    this.repBoolDays = [0,0,0,0,0,0,0]
   }
   // async getBuddies() {
   //   this.buddies = await this._http.getBuddies(this.username).toPromise();
@@ -63,6 +78,16 @@ export class Tab3Page implements OnInit {
   reset()
   {
     alert("Reset all entries")
+    this.taskName = null
+    this.taskDesc = null
+    this.dueDate = this.date
+    this.dueTime = this.time
+    this.repeatFlag = false;
+    this.repDays = [null];
+    this.repBoolDays = [0,0,0,0,0,0,0]
+    this.repEndDate = null
+    this.pickedBuddies = [null]
+    this.repEndTime = null
     // this.router.navigateByUrl('/tabs/tab3')
     // window.location.reload(true)
     
@@ -71,6 +96,20 @@ export class Tab3Page implements OnInit {
   save()
   {
     alert("Task Created");
+    this.changeDateFormat()
+    this.pickedBuddies = this.buddies;
+    let taskData: Task = 
+    {
+      createdBy: this.username,
+      taskName: this.taskName,
+      details: this.taskDesc,
+      completeTime: this.dueTime,
+      completeDay: this.dueDate,
+      buddies: this.pickedBuddies,
+      repeat: this.repeatFlag,
+      repWeekDay: this.repBoolDays
+    }
+
     this.router.navigateByUrl('/tabs/tab1');
   }
 
@@ -79,6 +118,47 @@ export class Tab3Page implements OnInit {
     alert("Cancelled");
     this.router.navigateByUrl('/tabs/tab1');
   }
+  
+  changeDateFormat()
+  {
+    this.repDays.forEach(element => {
+      
+      if (element == 'Sunday')
+      {
+        this.repBoolDays[0] = 1
+      }
+      else if (element == 'Monday')
+      {
+        this.repBoolDays[1] = 1
+      }
+      else if (element == 'Tuesday')
+      {
+        this.repBoolDays[2] = 1
+      }
+      else if (element == 'Wednesday')
+      {
+        this.repBoolDays[3] = 1
+      }
+      else if (element == 'Thursday')
+      {
+        this.repBoolDays[4] = 1
+      }
+      else if (element == 'Friday')
+      {
+        this.repBoolDays[5] = 1
+      }
+      else if (element == 'Saturday')
+      {
+        this.repBoolDays[6] = 1
+      }
+      else
+      {
+        alert("Invalid day given")
+      }
+      
+    });
+  }
+
 
 
   // IDK I ADDED THIS TO FIX DATETIME MAX AND MIN
@@ -95,7 +175,7 @@ export class Tab3Page implements OnInit {
   public currMinute: any = ('0' + (new Date().getMinutes())).slice(-2)
   public currTime: any = this.currHour12 + ":" + this.currMinute + " " + this.currAMPM;
   //repeat stuff
-  public buddies = ['Bud1', 'Bud2', 'Steve', 'Bud4'];
+  public buddies: any = []
   // public buddies: any;
 
   //USER INPUT TO SAVE
@@ -104,7 +184,8 @@ export class Tab3Page implements OnInit {
   public dueDate: string = this.date
   public dueTime: string;
   public repeatFlag: boolean = false;
-  public repDays: [string];
+  public repDays: [String];
+  public repBoolDays: any = [];
   public repEndDate: Date;
   public pickedBuddies: [string];
   public repEndTime: Time;
@@ -115,3 +196,5 @@ export class Tab3Page implements OnInit {
 
 
 }
+
+

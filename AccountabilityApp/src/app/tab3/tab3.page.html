@@ -36,7 +36,7 @@
 
     <ion-item class="toggleItems" [class.opened]="repeatFlag">
       <ion-label>Days</ion-label>
-        <ion-select name="DaySelection" [required]="repeatFlag" multiple="true" cancelText="Cancel" okText="Done" [(ngModel)]="repeatDays">
+        <ion-select name="DaySelection" [required]="repeatFlag" multiple="true" cancelText="Cancel" okText="Done" [(ngModel)]="repDays">
           <ion-select-option value="Sunday">Sunday</ion-select-option>
           <ion-select-option value="Monday">Monday</ion-select-option>
           <ion-select-option value="Tuesday">Tuesday</ion-select-option>
@@ -75,14 +75,14 @@
     <ion-item>
       <ion-label>Buddies</ion-label>
         <ion-select name="BuddySelection" multiple="true" required=true cancelText="Cancel" okText="Done" [(ngModel)]="pickedBuddies">
-          <ion-select-option *ngFor="let b of buddies" >{{b}}</ion-select-option>
+          <ion-select-option *ngFor="let b of buddies" >{{b.username}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <!-- SUBMIT / CANCEL BUTTON -->
     <ion-footer>
       <ion-toolbar>
-        <ion-button strong=true type="submit" expand="block" [disabled]="frm.invalid" size="default">Submit</ion-button>
+        <ion-button class="cancelButton" strong=true type="submit" expand="block" [disabled]="frm.invalid" size="default">Submit</ion-button>
         <ion-button type="reset" expand="block" size="default" slot="end" (click)="cancelled()">Cancel</ion-button>
       </ion-toolbar>  
     </ion-footer>
