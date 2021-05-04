@@ -8,11 +8,13 @@
   <div *ngIf="length != 0; else noTaskData">
     <ion-card>
       <div *ngFor="let c_task of taskData">
-        <ion-card-title>
-          {{ c_task.taskName }}
-        </ion-card-title>
+        <ion-card-header>
+          <ion-card-title>
+            {{ c_task.taskName }}
+          </ion-card-title>
+        </ion-card-header>
         <ion-card-content>
-          User: {{ c_task.createdBy}}
+          Buddy: {{ c_task.createdBy}}
           <br>
           Description: {{ c_task.details}}
           <br>
