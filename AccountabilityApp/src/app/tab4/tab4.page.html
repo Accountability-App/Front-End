@@ -5,21 +5,58 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="taskData; else noTaskData">
-    <span *ngFor="let curr_task of taskData">
-        <ion-item-divider>
-          <h3>{{ curr_task.title_of_task }}</h3>
-        </ion-item-divider>
-        <ion-card><ion-card-content>
-          Description: {{ curr_task.description_of_task }}
+  <div *ngIf="length != 0; else noTaskData">
+    <ion-card>
+      <div *ngFor="let c_task of taskData">
+        <ion-card-title>
+          {{ c_task.taskName }}
+        </ion-card-title>
+        <ion-card-content>
+          User: {{ c_task.createdBy}}
           <br>
-          Time: {{ curr_task.time_of_task }}
+          Description: {{ c_task.details}}
           <br>
-          Date: {{ curr_task.date_of_task }}
+          At: {{ c_task.completeTime}}
           <br>
-          Buddy: {{ curr_task.profile_id }}
+          <span *ngIf="c_task.repeat == true; else not_repeat">
+            End Date: {{ c_task.completeDay }}, 
+            <br>
+            for every 
+            <span *ngIf="c_task.repWeekDay[0] == true">
+              Sunday, 
+            </span>
+            <span *ngIf="c_task.repWeekDay[1] == true">
+              Monday,
+            </span>
+            <span *ngIf="c_task.repWeekDay[2] == true">
+              Tuesday,
+            </span>
+            <span *ngIf="c_task.repWeekDay[3] == true">
+              Wednesday,
+            </span>
+            <span *ngIf="c_task.repWeekDay[4] == true">
+              Thursday, 
+            </span>
+            <span *ngIf="c_task.repWeekDay[5] == true">
+              Friday, 
+            </span>
+            <span *ngIf="c_task.repWeekDay[6] == true">
+              Saturday 
+              <br>
+            </span>
+            <br>
+          </span>
+          <ng-template #not_repeat>
+          Date: {{ c_task.completeDay }}
           <br>
-        </ion-card-content></ion-card>
-    </span>
+          </ng-template>
+
+        </ion-card-content>
+      </div>
+    </ion-card>
   </div>
+  <ng-template #noTaskData>
+    <ion-item>There are no tasks to load!</ion-item>
+  </ng-template>
+
 </ion-content>
