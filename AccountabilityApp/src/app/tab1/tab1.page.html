@@ -44,32 +44,22 @@
       </span>
     </div>
   </div>
-  --->
-  <div *ngIf="specificProfileData; else nospecificProfileData">
-    <ion-item>
-      Welcome, {{ specificProfileData.firstname }}
-      <br>
-    </ion-item>
-    <ion-item>
-      <h2>My Tasks</h2>
-    </ion-item>
-  </div>
+  <div *ngIf="specificProfileData; else nospecificProfileData"></div>
   <ng-template #nospecificProfileData>
     <ion-item>ERROR: client could not connect to the server.</ion-item>
   </ng-template>
   <div *ngIf="taskData; else noTaskData">
     <ion-card>
       <div *ngFor="let c_task of taskData">
-        <ion-card-title>
-          {{ c_task.taskName }}
-        </ion-card-title>
+        <ion-card-header>
+          <ion-card-title>
+            {{ c_task.taskName }}
+          </ion-card-title>
+        </ion-card-header>
         <ion-card-content>
-          User: {{ c_task.createdBy}}
-          <br>
           Helpers:
           <span *ngFor="let buddy of c_task.buddies">
-            {{ buddy }},
-            {{ c_task.buddies.length}}
+            {{ buddy }}
           </span>
           <br>
           Description: {{ c_task.details}}

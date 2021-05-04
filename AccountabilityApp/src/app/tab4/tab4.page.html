@@ -9,12 +9,10 @@
     <ion-card>
       <div *ngFor="let c_task of taskData">
         <ion-card-header>
-          <ion-card-title>
-            {{ c_task.taskName }}
-          </ion-card-title>
+          <ion-card-title>{{ c_task.taskName }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          Buddy: {{ c_task.createdBy}}
+          Owner: {{ c_task.createdBy}}
           <br>
           Description: {{ c_task.details}}
           <br>
