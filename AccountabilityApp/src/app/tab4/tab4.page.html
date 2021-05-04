@@ -6,28 +6,20 @@
 
 <ion-content [fullscreen]="true">
   <div *ngIf="taskData; else noTaskData">
-    <div *ngIf="profileData; else noProfileData">
-      <span *ngFor="let curr_task of taskData">
-        <span *ngIf="profileData[0].profile_id == curr_task.profile_id">
-            <ion-item-divider>
-              <h3>{{ curr_task.title_of_task }}</h3>
-            </ion-item-divider>
-            <ion-card><ion-card-content>
-              Description: {{ curr_task.description_of_task }}
-              <br>
-              Time: {{ curr_task.time_of_task }}
-              <br>
-              Date: {{ curr_task.date_of_task }}
-              <br>
-            <span *ngFor="let curr_prof of profileData">
-              <span *ngIf="curr_task.profile_id == curr_prof.profile_id">
-                  Buddy: {{ curr_task.username }}
-              </span>
-            </span>
-            <br>
-            </ion-card-content></ion-card>
-        </span>
-      </span>
-    </div>
+    <span *ngFor="let curr_task of taskData">
+        <ion-item-divider>
+          <h3>{{ curr_task.title_of_task }}</h3>
+        </ion-item-divider>
+        <ion-card><ion-card-content>
+          Description: {{ curr_task.description_of_task }}
+          <br>
+          Time: {{ curr_task.time_of_task }}
+          <br>
+          Date: {{ curr_task.date_of_task }}
+          <br>
+          Buddy: {{ curr_task.profile_id }}
+          <br>
+        </ion-card-content></ion-card>
+    </span>
   </div>
 </ion-content>

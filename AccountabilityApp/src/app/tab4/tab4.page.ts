@@ -19,10 +19,6 @@ export class Tab4Page {
       this.taskData = t_data;
       console.log(this.taskData);
     } )
-    this._http.getData().subscribe(p_data => {
-      this.profileData = p_data;
-      console.log(this.profileData);
-    })
   }
 
 }
