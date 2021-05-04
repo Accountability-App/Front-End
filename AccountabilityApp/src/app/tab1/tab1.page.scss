@@ -1,25 +1,35 @@
 
 ion-item{
-    --ion-background-color:#7FB069;
+    //--ion-background-color:#7FB069;
+    --ion-background-color:white;
 }
     
 ion-item-divider{
-    --ion-background-color:#006600;
-    --ion-text-color: #b3ffb3;
+    //--ion-background-color:#006600;
+    //--ion-text-color: #b3ffb3;
+    --ion-background-color:white;
+    --ion-text-color:black;
 }
 
-ion-item-divider:hover{
-    --ion-background-color:#537345;
-}
+//ion-item-divider:hover{
+    //--ion-background-color:#537345;
+//}
 
 ion-toolbar{
-    --ion-background-color:#313131;
-    --ion-text-color: #7FB069;
+    //--ion-background-color:#313131;
+    //--ion-text-color: #7FB069;
+    --ion-background-color:black;
+    --ion-text-color:white;
 }
 ion-card{
-    --ion-background-color:#313131;
+    //--ion-background-color:#313131;
+    --ion-background-color:white;
 
 }
 ion-content{
-    --ion-background-color:#7FB069;
+    //--ion-background-color:#7FB069;
+    --ion-background-color:white;
+}
+ion-card-title{
+    left: 1.7%;
 }
