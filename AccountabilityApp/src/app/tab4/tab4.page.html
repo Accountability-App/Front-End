@@ -5,5 +5,60 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Replace with your code"></app-explore-container>
+  <div *ngIf="length != 0; else noTaskData">
+    <ion-card>
+      <div *ngFor="let c_task of taskData">
+        <ion-card-header>
+          <ion-card-title>
+            {{ c_task.taskName }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Buddy: {{ c_task.createdBy}}
+          <br>
+          Description: {{ c_task.details}}
+          <br>
+          At: {{ c_task.completeTime}}
+          <br>
+          <span *ngIf="c_task.repeat == true; else not_repeat">
+            End Date: {{ c_task.completeDay }}, 
+            <br>
+            for every 
+            <span *ngIf="c_task.repWeekDay[0] == true">
+              Sunday, 
+            </span>
+            <span *ngIf="c_task.repWeekDay[1] == true">
+              Monday,
+            </span>
+            <span *ngIf="c_task.repWeekDay[2] == true">
+              Tuesday,
+            </span>
+            <span *ngIf="c_task.repWeekDay[3] == true">
+              Wednesday,
+            </span>
+            <span *ngIf="c_task.repWeekDay[4] == true">
+              Thursday, 
+            </span>
+            <span *ngIf="c_task.repWeekDay[5] == true">
+              Friday, 
+            </span>
+            <span *ngIf="c_task.repWeekDay[6] == true">
+              Saturday 
+              <br>
+            </span>
+            <br>
+          </span>
+          <ng-template #not_repeat>
+          Date: {{ c_task.completeDay }}
+          <br>
+          </ng-template>
+
+        </ion-card-content>
+      </div>
+    </ion-card>
+  </div>
+  <ng-template #noTaskData>
+    <ion-item>There are no tasks to load!</ion-item>
+  </ng-template>
+
 </ion-content>
