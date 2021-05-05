@@ -24,3 +24,19 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+// OUR STUFF
+@font-face 
+{   
+    font-family: 'OpenSans';    //This is what we are going to call
+    src: url('/assets/fonts/OpenSans-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.cancelButton
+{
+  --ion-button-color:#266152; 
+}
+
