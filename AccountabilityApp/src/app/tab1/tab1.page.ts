@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { PopoverController, ModalController } from '@ionic/angular';
-//import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
-//import { ProfileModalComponent } from '../profile-modal/profile-modal.component';
 import { Router } from '@angular/router';
 import { HttpService } from './http.service';
-
 
 @Component({
   selector: 'app-tab1',
