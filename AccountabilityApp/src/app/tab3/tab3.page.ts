@@ -33,7 +33,7 @@ export class Tab3Page implements OnInit {
   {
     this.username = "RoketWarrior";
     this.buddies = await this._http.getBuddies(this.username).toPromise();
-    this.repBoolDays = [0,0,0,0,0,0,0]
+    this.repBoolDays = [false,false,false,false,false,false,false]
   }
   // async getBuddies() {
   //   this.buddies = await this._http.getBuddies(this.username).toPromise();
@@ -77,19 +77,19 @@ export class Tab3Page implements OnInit {
 
   reset()
   {
-    alert("Reset all entries")
+    // alert("Reset all entries")
     this.taskName = null
     this.taskDesc = null
     this.dueDate = this.date
     this.dueTime = this.time
     this.repeatFlag = false;
     this.repDays = [null];
-    this.repBoolDays = [0,0,0,0,0,0,0]
+    this.repBoolDays = [false,false,false,false,false,false,false]
     this.repEndDate = null
     this.pickedBuddies = [null]
     this.repEndTime = null
     // this.router.navigateByUrl('/tabs/tab3')
-    // window.location.reload(true)
+    window.location.reload(true)
     
   }
 
@@ -109,6 +109,11 @@ export class Tab3Page implements OnInit {
       repeat: this.repeatFlag,
       repWeekDay: this.repBoolDays
     }
+    
+
+    this._http.sendTask(taskData);
+
+    this.reset()
 
     this.router.navigateByUrl('/tabs/tab1');
   }
@@ -121,39 +126,41 @@ export class Tab3Page implements OnInit {
   
   changeDateFormat()
   {
+
     this.repDays.forEach(element => {
-      
+    
+      // console.log(element)
       if (element == 'Sunday')
       {
-        this.repBoolDays[0] = 1
+        this.repBoolDays[0] = true
       }
       else if (element == 'Monday')
       {
-        this.repBoolDays[1] = 1
+        this.repBoolDays[1] = true
       }
       else if (element == 'Tuesday')
       {
-        this.repBoolDays[2] = 1
+        this.repBoolDays[2] = true
       }
       else if (element == 'Wednesday')
       {
-        this.repBoolDays[3] = 1
+        this.repBoolDays[3] = true
       }
       else if (element == 'Thursday')
       {
-        this.repBoolDays[4] = 1
+        this.repBoolDays[4] = true
       }
       else if (element == 'Friday')
       {
-        this.repBoolDays[5] = 1
+        this.repBoolDays[5] = true
       }
       else if (element == 'Saturday')
       {
-        this.repBoolDays[6] = 1
+        this.repBoolDays[6] = true
       }
       else
       {
-        alert("Invalid day given")
+        // alert("Invalid day given")
       }
       
     });

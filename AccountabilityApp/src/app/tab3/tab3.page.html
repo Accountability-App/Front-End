@@ -75,7 +75,7 @@
     <ion-item>
       <ion-label>Buddies</ion-label>
         <ion-select name="BuddySelection" multiple="true" required=true cancelText="Cancel" okText="Done" [(ngModel)]="pickedBuddies">
-          <ion-select-option *ngFor="let b of buddies" >{{b.username}}</ion-select-option>
+          <ion-select-option *ngFor="let b of buddies" >{{b}}</ion-select-option>
       </ion-select>
     </ion-item>
 
