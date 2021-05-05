@@ -25,12 +25,14 @@ export class Tab1Page {
       console.log(this.specificProfileData);
     })
     this.username = "RoketWarrior";
+    // this.username = "ArchDruid";
     this.grabTaskData();
   }
 
   async grabTaskData() {
     this._http.getMyTasks(this.username).subscribe(task_data => {
       this.taskData = task_data;
+      console.log(task_data);
       this.myArray = JSON.stringify(this.taskData);
       console.log("Task Data is: " + this.myArray);
     })

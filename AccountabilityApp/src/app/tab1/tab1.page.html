@@ -13,7 +13,7 @@
   <ng-template #noProfileData>
     <ion-item>Profile Id is currently not available.</ion-item>
   </ng-template> -->
-  <div *ngIf="taskData; else noTaskData">
+  <!-- <div *ngIf="taskData; else noTaskData">
     <div *ngIf="profileData; else noProfileData">
       <span *ngFor="let curr_task of taskData">
         <span *ngIf="curr_task">
@@ -43,14 +43,14 @@
         </span>
       </span>
     </div>
-  </div>
+  </div> -->
   <div *ngIf="specificProfileData; else nospecificProfileData"></div>
   <ng-template #nospecificProfileData>
     <ion-item>ERROR: client could not connect to the server.</ion-item>
   </ng-template>
   <div *ngIf="taskData; else noTaskData">
-    <ion-card>
-      <div *ngFor="let c_task of taskData">
+    <div *ngFor="let c_task of taskData">
+      <ion-card>
         <ion-card-header>
           <ion-card-title>
             {{ c_task.taskName }}
@@ -97,19 +97,19 @@
           <ng-template #not_repeat>
           Date: {{ c_task.completeDay }}
           <br>
-          <ion-button size="small" color="medium">
+          <!-- <ion-button size="small" color="medium">
             <ion-icon slot="start" name="construct-outline"></ion-icon>
               Edit Task
           </ion-button>
           <ion-button size="small" color="danger">
             <ion-icon slot="start" name="trash-outline"></ion-icon>
               Delete Task
-          </ion-button>
+          </ion-button> -->
           </ng-template>
 
         </ion-card-content>
-      </div>
-    </ion-card>
+      </ion-card>
+    </div>
   </div>
   <ng-template #noTaskData>
     <ion-item>There are no tasks to load!</ion-item>

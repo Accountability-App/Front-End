@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController} from '@ionic/angular';
 import { RepeatSelectorComponent } from '../repeat-selector/repeat-selector.component';
 import { HttpService } from './http.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface Task 
 {
@@ -32,6 +33,7 @@ export class Tab3Page implements OnInit {
   async ngOnInit()
   {
     this.username = "RoketWarrior";
+    // this.username = "ArchDruid";
     this.buddies = await this._http.getBuddies(this.username).toPromise();
     this.repBoolDays = [false,false,false,false,false,false,false]
   }
@@ -96,15 +98,17 @@ export class Tab3Page implements OnInit {
   save()
   {
     alert("Task Created");
-    this.changeDateFormat()
-    this.pickedBuddies = this.buddies;
+    if (this.repeatFlag) {
+      this.changeDateFormat()
+    }
+    // this.pickedBuddies = this.buddies;
     let taskData: Task = 
     {
       createdBy: this.username,
       taskName: this.taskName,
       details: this.taskDesc,
-      completeTime: this.dueTime,
-      completeDay: this.dueDate,
+      completeTime: (new Date(this.dueTime)).toLocaleTimeString(),
+      completeDay: (new Date(this.dueDate)).toLocaleDateString(),
       buddies: this.pickedBuddies,
       repeat: this.repeatFlag,
       repWeekDay: this.repBoolDays

@@ -6,8 +6,8 @@
 
 <ion-content [fullscreen]="true">
   <div *ngIf="length != 0; else noTaskData">
-    <ion-card>
-      <div *ngFor="let c_task of taskData">
+    <div *ngFor="let c_task of taskData">
+      <ion-card>
         <ion-card-header>
           <ion-card-title>{{ c_task.taskName }}</ion-card-title>
         </ion-card-header>
@@ -52,8 +52,8 @@
           </ng-template>
 
         </ion-card-content>
-      </div>
-    </ion-card>
+      </ion-card>
+    </div>
   </div>
   <ng-template #noTaskData>
     <ion-item>There are no tasks to load!</ion-item>
