@@ -4,3 +4,10 @@
 
 /* To quickly generate your own theme, check out the color generator */
 /* https://ionicframework.com/docs/theming/color-generator */
+
+
+ion-header
+{
+  --ion-background-color:#f7efe2;
+  
+}
