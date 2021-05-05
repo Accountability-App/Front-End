@@ -7,15 +7,16 @@
 
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="profileData; else noProfileData">
+  <!-- <div *ngIf="profileData; else noProfileData">
     <ion-item>Profile Id is {{ profileData[0].profile_id }}</ion-item>
   </div>
   <ng-template #noProfileData>
     <ion-item>Profile Id is currently not available.</ion-item>
-  </ng-template>
+  </ng-template> -->
   <div *ngIf="taskData; else noTaskData">
     <div *ngIf="profileData; else noProfileData">
       <span *ngFor="let curr_task of taskData">
+        <span *ngIf="curr_task">
         <span *ngIf="profileData[0].profile_id == curr_task.profile_id">
             <ion-item-divider>
               <h3>{{ curr_task.title_of_task }}</h3>
@@ -33,15 +34,85 @@
               </span>
             </span>
             <br>
-            <ion-button size="small" color="danger" href="#">
+            <ion-button size="small" color="danger" (click)="removeData(curr_task.task_id)">
               <ion-icon slot="start" name="trash-outline"></ion-icon>
               Delete Task
             </ion-button>
             </ion-card-content></ion-card>
         </span>
+        </span>
       </span>
     </div>
   </div>
+  <div *ngIf="specificProfileData; else nospecificProfileData"></div>
+  <ng-template #nospecificProfileData>
+    <ion-item>ERROR: client could not connect to the server.</ion-item>
+  </ng-template>
+  <div *ngIf="taskData; else noTaskData">
+    <ion-card>
+      <div *ngFor="let c_task of taskData">
+        <ion-card-header>
+          <ion-card-title>
+            {{ c_task.taskName }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Helpers:
+          <span *ngFor="let buddy of c_task.buddies">
+            {{ buddy }}
+          </span>
+          <br>
+          Description: {{ c_task.details}}
+          <br>
+          At: {{ c_task.completeTime}}
+          <br>
+          <span *ngIf="c_task.repeat == true; else not_repeat">
+            End Date: {{ c_task.completeDay }}, 
+            <br>
+            for every 
+            <span *ngIf="c_task.repWeekDay[0] == true">
+              Sunday, 
+            </span>
+            <span *ngIf="c_task.repWeekDay[1] == true">
+              Monday,
+            </span>
+            <span *ngIf="c_task.repWeekDay[2] == true">
+              Tuesday,
+            </span>
+            <span *ngIf="c_task.repWeekDay[3] == true">
+              Wednesday,
+            </span>
+            <span *ngIf="c_task.repWeekDay[4] == true">
+              Thursday, 
+            </span>
+            <span *ngIf="c_task.repWeekDay[5] == true">
+              Friday, 
+            </span>
+            <span *ngIf="c_task.repWeekDay[6] == true">
+              Saturday 
+              <br>
+            </span>
+            <br>
+          </span>
+          <ng-template #not_repeat>
+          Date: {{ c_task.completeDay }}
+          <br>
+          <ion-button size="small" color="medium">
+            <ion-icon slot="start" name="construct-outline"></ion-icon>
+              Edit Task
+          </ion-button>
+          <ion-button size="small" color="danger">
+            <ion-icon slot="start" name="trash-outline"></ion-icon>
+              Delete Task
+          </ion-button>
+          </ng-template>
+
+        </ion-card-content>
+      </div>
+    </ion-card>
+  </div>
+  <ng-template #noTaskData>
+    <ion-item>There are no tasks to load!</ion-item>
+  </ng-template>
 
 </ion-content>
-
